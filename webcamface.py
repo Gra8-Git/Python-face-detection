@@ -42,15 +42,12 @@ while(True):
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	faces = fcascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
 	for (x, y, w, h) in faces:
-		print (x, y, w, h)
-
 		end_cord_x= x + w	#t left
 		end_cord_y = y + h	#t left
 		bleft_cord_x = x	#b left
 		bleft_cord_y = y + h	#b left
 		tright_cord_x = x + w	#t right
 		tright_cord_y = y	#t right
-
 		frame = draw_border(frame, (x,y), (bleft_cord_x,bleft_cord_y), (tright_cord_x, tright_cord_y), (end_cord_x,end_cord_y))
 	cv2.imshow('frame',frame)
 	cv2.setMouseCallback("frame",mouseevent)
